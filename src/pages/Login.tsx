@@ -30,7 +30,7 @@ const Login = () => {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const mutation = useMutation({
-    mutationFn: (data: FormValues) => loginUser(data),
+    mutationFn: (data: FormValues) => loginUser({ username: data.username, password: data.password }),
     onSuccess: (data, variables) => {
       setAuth(data.access_token, { username: variables.username });
       toast.success("Добро пожаловать!");

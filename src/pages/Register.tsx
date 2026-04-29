@@ -32,7 +32,7 @@ const Register = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FormValues) => {
-      const created = await registerUser(data);
+      const created = await registerUser({ username: data.username, email: data.email, password: data.password });
       const login = await loginUser({ username: data.username, password: data.password });
       return { created, login };
     },
